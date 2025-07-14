@@ -10,20 +10,31 @@
       margin: 0;
       background: #e5e5e5;
       font-family: sans-serif;
-      padding: 40px;
+      padding: 60px 40px;
     }
 
     .hstack {
       display: flex;
-      flex-direction: row;
-      gap: 40px;
       align-items: center;
-      flex-wrap: wrap;
       justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-frame {
+      flex: 1 1 320px;
+      max-width: 480px;
+    }
+
+    .slider-frame {
+      flex: 1 1 480px;
+      max-width: 600px;
+      position: relative;
     }
 
     .vstack {
-      max-width: 500px;
       display: flex;
       flex-direction: column;
       gap: 40px;
@@ -31,7 +42,7 @@
 
     h3 {
       margin: 0;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 500;
     }
 
@@ -47,6 +58,7 @@
       cursor: pointer;
       font-size: 16px;
       color: #111;
+      line-height: 1.4;
     }
 
     .tab::before {
@@ -66,8 +78,9 @@
 
     .slider-wrapper {
       position: relative;
-      max-width: 100vw;
       overflow: visible;
+      width: 100%;
+      height: 500px;
     }
 
     .arrow {
@@ -84,14 +97,12 @@
       user-select: none;
     }
 
-    .arrow.left { left: 10px; }
-    .arrow.right { right: 10px; }
+    .arrow.left { left: -40px; }
+    .arrow.right { right: -40px; }
 
     .slider-container {
-      margin: 0 auto;
-      width: 90vw;
-      max-width: 400px;
-      height: 500px;
+      width: 100%;
+      height: 100%;
       perspective: 1000px;
       position: relative;
     }
@@ -121,13 +132,13 @@
     }
 
     .slide.prev {
-      transform: translateX(-120%) scale(0.9);
+      transform: translateX(-30%) scale(0.92);
       opacity: 0.4;
       z-index: 1;
     }
 
     .slide.next {
-      transform: translateX(120%) scale(0.9);
+      transform: translateX(30%) scale(0.92);
       opacity: 0.4;
       z-index: 1;
     }
@@ -141,36 +152,40 @@
     @media (max-width: 768px) {
       .hstack {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
       }
+      .arrow.left { left: 10px; }
+      .arrow.right { right: 10px; }
     }
   </style>
 </head>
 <body>
 <div class="hstack">
-  <div class="vstack">
-    <h3>Our GRP testing procedures verify both mechanical and chemical compliance with applicable DIN and EN standards</h3>
-    <div class="tabs" id="tabs">
-      <div class="tab" data-index="0">Tensile and bending tests (DIN EN 14125)</div>
-      <div class="tab" data-index="1">Styrene content measurement (DIN 53394)</div>
-      <div class="tab" data-index="2">Glass content determination (DIN EN 1172)</div>
-      <div class="tab" data-index="3">24-hour biaxial creep test</div>
+  <div class="content-frame">
+    <div class="vstack">
+      <h3>Our GRP testing procedures verify both mechanical and chemical compliance with applicable DIN and EN standards</h3>
+      <div class="tabs" id="tabs">
+        <div class="tab" data-index="0">Tensile and bending tests (DIN EN 14125)</div>
+        <div class="tab" data-index="1">Styrene content measurement (DIN 53394)</div>
+        <div class="tab" data-index="2">Glass content determination (DIN EN 1172)</div>
+        <div class="tab" data-index="3">24-hour biaxial creep test</div>
+      </div>
     </div>
   </div>
 
-  <div class="slider-wrapper">
-    <button class="arrow left">&#10094;</button>
-
-    <div class="slider-container">
-      <div class="slider" id="slider">
-        <div class="slide">1</div>
-        <div class="slide">2</div>
-        <div class="slide">3</div>
-        <div class="slide">4</div>
+  <div class="slider-frame">
+    <div class="slider-wrapper">
+      <button class="arrow left">&#10094;</button>
+      <div class="slider-container">
+        <div class="slider" id="slider">
+          <div class="slide">1</div>
+          <div class="slide">2</div>
+          <div class="slide">3</div>
+          <div class="slide">4</div>
+        </div>
       </div>
+      <button class="arrow right">&#10095;</button>
     </div>
-
-    <button class="arrow right">&#10095;</button>
   </div>
 </div>
 
